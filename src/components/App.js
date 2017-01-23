@@ -11,8 +11,11 @@ class App extends React.Component {
     super();
 
     this.addFish = this.addFish.bind(this);
+    this.updateFish = this.updateFish.bind(this);
+    this.removeFish = this.removeFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.removeFromOrder = this.removeFromOrder.bind(this);
     // getinitialstate
     this.state = {
       fishes: {},
@@ -50,7 +53,7 @@ class App extends React.Component {
 
     console.log('something changed');
     console.log({nextProps, nextState});
-    
+
   }
 
   addFish(fish) {
@@ -60,6 +63,19 @@ class App extends React.Component {
     const timeStamp = Date.now();
     fishes[`fish-${timeStamp}`] = fish;
     // set state
+    this.setState({ fishes });
+  }
+
+  updateFish(key, updatedFish) {
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({fishes});
+  }
+
+  removeFish(key) {
+    // update state
+    const fishes = {...this.state.fishes};
+    fishes[key] = null;
     this.setState({ fishes });
   }
 
@@ -79,6 +95,15 @@ class App extends React.Component {
     this.setState({order});
   }
 
+  removeFromOrder(key) {
+    // take copy of state
+    const order = {...this.state.order};
+    // update or add the new number of fish-name
+    delete order[key];
+    // update our state
+    this.setState({ order });
+  }
+
   render() {
     return(
       <div className="catch-of-the-day">
@@ -92,10 +117,15 @@ class App extends React.Component {
           </ul>
         </div>
         <Order
+          removeFromOrder={this.removeFromOrder}
           params={this.props.params}
           fishes={this.state.fishes}
           order={this.state.order} />
-        <Inventory loadSamples={this.loadSamples} addFish={this.addFish}/>
+        <Inventory
+            removeFish={this.removeFish}
+            updateFish={this.updateFish}
+            fishes={this.state.fishes}
+            loadSamples={this.loadSamples} addFish={this.addFish}/>
       </div>
     )
   }
