@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.params.storeId);
     // run right before app is rendered
     this.ref = base.syncState(`${this.props.params.storeId}/fishes`,
       {
@@ -129,6 +128,10 @@ class App extends React.Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  params: React.PropTypes.object.isRequired
 }
 
 export default App;
