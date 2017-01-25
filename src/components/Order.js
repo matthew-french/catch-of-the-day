@@ -65,8 +65,6 @@ class Order extends React.Component {
           </li>
         </CSSTransitionGroup>
 
-        <p>{orderIds}</p>
-
       </div>
     )
   }
