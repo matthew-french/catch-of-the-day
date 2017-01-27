@@ -13,9 +13,13 @@ class App extends React.Component {
     this.addFish = this.addFish.bind(this);
     this.updateFish = this.updateFish.bind(this);
     this.removeFish = this.removeFish.bind(this);
-    this.loadSamples = this.loadSamples.bind(this);
+    // Demo of new js feature ES Class Fields and & Static Properties
+    //this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
     this.removeFromOrder = this.removeFromOrder.bind(this);
+
+
+
     // getinitialstate
     this.state = {
       fishes: {},
@@ -78,12 +82,13 @@ class App extends React.Component {
     this.setState({ fishes });
   }
 
-  loadSamples(){
+  // demo of new ES feature for Class and Static properties.
+  loadSamples = () => {
     this.setState({
       fishes: sampleFishes,
       }
     )
-  }
+  }; // don't foreget the semi for new es feature.
 
   addToOrder(key) {
     // take copy of state
