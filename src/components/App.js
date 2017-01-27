@@ -18,14 +18,18 @@ class App extends React.Component {
     this.addToOrder = this.addToOrder.bind(this);
     this.removeFromOrder = this.removeFromOrder.bind(this);
 
-
-
     // getinitialstate
-    this.state = {
-      fishes: {},
-      order: {},
-    }
+    // this.state = {
+    //   fishes: {},
+    //   order: {},
+    // }
   }
+
+  // getinitialstate
+  state = {
+    fishes: {},
+    order: {},
+  };
 
   componentWillMount() {
     // run right before app is rendered
