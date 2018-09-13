@@ -3,23 +3,27 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "autoprefixer-stylus": "0.10.0",
-    "babel-eslint": "^7.1.1",
-    "concurrently": "3.0.0",
-    "eslint": "^3.12.2",
-    "eslint-plugin-flowtype": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.8.0",
-    "react-scripts": "0.6.1",
-    "stylus": "0.54.5"
+    "concurrently": "3.5.1",
+    "eslint": "5.5.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.1",
+    "react-scripts": "^1.1.4"
   },
   "dependencies": {
-    "history": "4.2.0",
-    "re-base": "2.2.0",
-    "react": "15.3.2",
-    "react-addons-css-transition-group": "15.3.2",
-    "react-dom": "15.3.2",
-    "react-router": "4.0.0-alpha.4"
+    "autoprefixer-stylus": "0.14.0",
+    "firebase": "^4.10.0",
+    "i": "0.3.6",
+    "npm": "6.4.1",
+    "prop-types": "^15.6.0",
+    "re-base": "3.2.2",
+    "react": "^16.3.0-alpha.1",
+    "react-dom": "^16.3.0-alpha.1",
+    "react-router-dom": "^4.2.2",
+    "react-transition-group": "1.2.1",
+    "serve": "^6.5.8",
+    "stylus": "0.54.5"
   },
   "scripts": {
     "start": "react-scripts start",

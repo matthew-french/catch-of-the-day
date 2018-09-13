@@ -1,23 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = (props) => {
-    return (
-      <header className="top">
-        <h1>
-          Catch
-          <span className="ofThe">
-            <div className="of">of</div>
-            <div className="the">the</div>
-          </span>
-          Day
-        </h1>
-        <h3 className="tagline"><span>{props.tagline}</span></h3>
-      </header>
-    )
-}
+const Header = ({ tagline }) => (
+  <header className="top">
+    <h1>
+      Catch
+      <span className="ofThe">
+        <div className="of">of</div>
+        <div className="the">the</div>
+      </span>
+      Day
+    </h1>
+    <h3 className="tagline"><span>{tagline}</span></h3>
+  </header>
+);
 
 Header.propTypes = {
-  tagline: React.PropTypes.string.isRequired
-}
+  tagline: PropTypes.string.isRequired,
+};
 
 export default Header;
