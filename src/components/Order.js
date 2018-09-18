@@ -10,19 +10,22 @@ class Order extends React.Component {
   }
 
   renderOrder(key) {
-    const fish = this.props.fishes[key];
-    const count = this.props.order[key];
-    const removeButton = <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>;
+    const { fishes, order, removeFromOrder } = this.props;
+    const fish = fishes[key];
+    const count = order[key];
+    const removeButton = <button type="button" onClick={() => removeFromOrder(key)}>&times;</button>;
 
     if (!fish || fish.status === 'unavailable') {
-      return <li key={key}>
-Sorry,
-{' '}
-{fish ? fish.name : 'fish'}
-{' '}
-is no longer available!
-{removeButton}
-</li>;
+      return (
+        <li key={key}>
+          Sorry,
+          {' '}
+          {fish ? fish.name : 'fish'}
+          {' '}
+          is no longer available!
+          {removeButton}
+        </li>
+      );
     }
 
     return (
@@ -37,11 +40,11 @@ is no longer available!
           >
             <span key={count}>{count}</span>
           </CSSTransitionGroup>
-          lbs 
-{' '}
-{fish.name} 
-{' '}
-{removeButton}
+          lbs
+          {' '}
+          {fish.name}
+          {' '}
+          {removeButton}
         </span>
         <span className="price">{formatPrice(count * fish.price)}</span>
       </li>
@@ -49,16 +52,23 @@ is no longer available!
   }
 
   render() {
-    const orderIds = Object.keys(this.props.order);
+    const { fishes, order } = this.props;
+    const orderIds = Object.keys(order);
+
+    console.log(fishes);
+    console.log(orderIds);
+
     const total = orderIds.reduce((prevTotal, key) => {
-      const fish = this.props.fishes[key];
-      const count = this.props.order[key];
+      const fish = fishes[key];
+      const count = order[key];
       const isAvailable = fish && fish.status === 'available';
+
       if (isAvailable) {
         return prevTotal + (count + fish.price || 0);
       }
       return prevTotal;
     }, 0);
+
     return (
       <div className="orderWrap">
         <h2>Your Order</h2>
